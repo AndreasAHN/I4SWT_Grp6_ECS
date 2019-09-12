@@ -2,16 +2,16 @@
 
 namespace ECS.Refactored
 {
-    internal class FakeTempSensor
+    internal class FakeTempSensor : ITempSensor
     {
-        private Random Fakegen = new Random();
+        private Random gen = new Random();
 
-        public int FakeGetTemp()
+        public int GetTemp()
         {
-            return Fakegen.Next(-5, 45);
+            return gen.Next(-5, 45);
         }
 
-        public bool FakeRunSelfTest()
+        public bool RunSelfTest()
         {
             return true;
         }

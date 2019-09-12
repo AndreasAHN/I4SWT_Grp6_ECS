@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ECS.Refactored
 {
-    class FakeHeater
+    class FakeHeater : IHeater
     {
 
         public void TurnOn()

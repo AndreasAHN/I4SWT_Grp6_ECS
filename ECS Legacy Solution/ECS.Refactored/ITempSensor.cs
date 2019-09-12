@@ -6,7 +6,6 @@ namespace ECS.Refactored
 {
     public interface ITempSensor
     {
-        Random Gen();
         int GetTemp();
         bool RunSelfTest();
     }
