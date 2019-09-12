@@ -9,6 +9,7 @@ namespace ECS.Refactored
         public int GetTemp()
         {
             return gen.Next(-5, 45);
+
         }
 
         public bool RunSelfTest()
@@ -16,4 +17,7 @@ namespace ECS.Refactored
             return true;
         }
     }
+   
+
 }
+
