@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ECS.Refactored
 {
-    public interface IWindow
+    internal class Window : IWindow
     {
         void Close();
         void Open();
