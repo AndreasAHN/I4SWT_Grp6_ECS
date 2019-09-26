@@ -26,8 +26,5 @@ namespace ECS.Refactored.TestUnit
             // Inject them into the uut via the constructor
             _uut = new ECS(_fakeTempSensor, _fakeHeater, _fakeWindow, 25, 28);
         }
-
-
-
     }
 }

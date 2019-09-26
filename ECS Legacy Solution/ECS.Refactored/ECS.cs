@@ -2,42 +2,57 @@
 {
     public class ECS
     {
-        private int _threshold;
+        private int _lowerThreshold;
+        private int _upperThreshold;
         private readonly ITempSensor _tempSensor;
         private readonly IHeater _heater;
         private readonly IWindow _window;
 
-        public ECS(int thr)
+        public ECS(IWindow window, IHeater heater, ITempSensor tempSensor)
         {
-            SetThreshold(thr);
-            _tempSensor = new TempSensor();
-            _heater = new Heater();
-            _window = new Window();
+            _tempSensor = tempSensor;
+            _heater = heater;
+            _window = window;
         }
 
         public void Regulate()
         {
-            var t = _tempSensor.GetTemp();
-            if (t < _threshold)
+            var temp = _tempSensor.GetTemp();
+            if (temp <= _lowerThreshold)
             {
                 _heater.TurnOn();
                 _window.Close();
             }
-            else if (t >= _threshold)
+            else if (temp >= _lowerThreshold && temp <= _upperThreshold)
+            {
+                _heater.TurnOff();
+                _window.Close();
+            }
+            else
             {
                 _heater.TurnOff();
                 _window.Open();
             }
         }
 
-        public void SetThreshold(int thr)
+        public void SetUppperThreshold(int thr)
         {
-            _threshold = thr;
+            _upperThreshold = thr;
         }
 
-        public int GetThreshold()
+        public int GetUppperThreshold()
         {
-            return _threshold;
+            return _upperThreshold;
+        }
+
+        public void SetLowerThreshold(int thr)
+        {
+            _lowerThreshold = thr;
+        }
+
+        public int GetLowerThreshold()
+        {
+            return _lowerThreshold;
         }
 
         public int GetCurTemp()
@@ -45,9 +60,9 @@
             return _tempSensor.GetTemp();
         }
 
-        public bool RunSelfTest()
-        {
-            return _tempSensor.RunSelfTest() && _heater.RunSelfTest();
-        }
+        //public bool RunSelfTest()
+        //{
+        //    return _tempSensor.RunSelfTest() && _heater.RunSelfTest();
+        //}
     }
 }
