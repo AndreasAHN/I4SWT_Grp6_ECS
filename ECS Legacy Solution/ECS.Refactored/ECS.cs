@@ -13,6 +13,7 @@
             _tempSensor = tempSensor;
             _heater = heater;
             _window = window;
+
         }
 
         public void Regulate()

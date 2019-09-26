@@ -16,15 +16,19 @@ namespace ECS.Refactored.TestUnit
         private ECS _uut;
         private FakeWindow _fakeWindow;
 
-        [setup]
+        [SetUp]
         public void Setup()
         {
             // Create the fake stubs and mocks
             _fakeHeater = new FakeHeater();
             _fakeTempSensor = new FakeTempSensor();
             _fakeWindow = new FakeWindow();
-            // Inject them into the uut via the constructor
-            _uut = new ECS(_fakeTempSensor, _fakeHeater, _fakeWindow, 25, 28);
+
+            _uut = new ECS(_fakeTempSensor, _fakeHeater, _fakeWindow);
+            _uut.SetLowerThreshold(25);
+            _uut.SetUppperThreshold(28);
         }
+
+
     }
 }
