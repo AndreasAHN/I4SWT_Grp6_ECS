@@ -8,6 +8,6 @@ namespace ECS.Refactored
     {
         void TurnOn();
         void TurnOff();
-        //bool RunSelfTest();
+        bool RunSelfTest();
     }
 }
